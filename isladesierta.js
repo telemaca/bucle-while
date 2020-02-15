@@ -1,51 +1,40 @@
 //VARIABLES DE ARRAY Y STRING
-let boatAndIslandArray = ["⛵️", "🌊", "🌊", "🌊", "🏝"]
-let boatAndIsland = boatAndIslandArray.join("")
+let boatAndIslandArray = ["⛵️", "🌊", "🌊","🌊","🌊","🌊", "🌊", "🏝"]
+let boatAndIsland = ""
 
-console.log(boatAndIslandArray)
-console.log(boatAndIsland)
+//DEFINO FLAG VARIABLE
+let boatInSea = true;
 
-//VARIABLES PARA BARCO Y MAR
-let boat = "⛵️"
-let wave = "🌊"
+let boatIndex = 0;
+let forwardsOrBackwards = "";
 
 //LOOP QUE CORRE MIENTRAS EL BARCO NO ESTÉ AL LADO DE LA ISLA
-while (boatAndIslandArray[3] !== "⛵️") {
-    let forwardsOrBackwards = prompt (`${boatAndIsland} \n¿AVANZAR o RETROCEDER?`)
+while (boatInSea) {
+    //TRANSFORMO EL ARRAY EN STRING PARA MOSTRARLO EN EL PROMPT
+    boatAndIsland = boatAndIslandArray.join("")
+
+    forwardsOrBackwards = prompt (`${boatAndIsland} \n¿AVANZAR o RETROCEDER?`)
+    boatIndex = boatAndIslandArray.indexOf("⛵️")
 
     //DECIDE AVANZAR
     if (forwardsOrBackwards === "AVANZAR"){
-                
-        if (boatAndIslandArray[0] === boat) {
-            boatAndIslandArray[1] = boat
-            boatAndIslandArray[0] = wave
-        } else if (boatAndIslandArray[1] === boat) {
-            boatAndIslandArray[2] = boat
-            boatAndIslandArray[1] = wave
-        } else if (boatAndIslandArray[2] === boat) {
-            boatAndIslandArray[3] = boat
-            boatAndIslandArray[2] = wave
-        } 
-
-        boatAndIsland = boatAndIslandArray.join("")
-        console.log(boatAndIsland)
+        boatAndIslandArray[boatIndex+1] = "⛵️";
+        boatAndIslandArray[boatIndex] = "🌊";
     }
 
     //DECIDE RETROCEDER
-    if (forwardsOrBackwards === "RETROCEDER"){
-                
-        if (boatAndIslandArray[0] === boat) {
+    else if (forwardsOrBackwards === "RETROCEDER"){
+        if (boatAndIslandArray[0] === "⛵️") {
             forwardsOrBackwards = prompt(`Estás en el inicio. No podés retroceder. Escribí "AVANZAR".`)
-        } else if (boatAndIslandArray[1] === boat) {
-            boatAndIslandArray[0] = boat
-            boatAndIslandArray[1] = wave
-        } else if (boatAndIslandArray[2] === boat) {
-            boatAndIslandArray[1] = boat
-            boatAndIslandArray[2] = wave
-        } 
+        } else {
+            boatAndIslandArray[boatIndex-1] = "⛵️";
+            boatAndIslandArray[boatIndex] = "🌊";
+        }
+    }
 
-        boatAndIsland = boatAndIslandArray.join("")
-        console.log(boatAndIsland)
+    //DEFINO CONDICION PARA QUE DEJE DE GIRAR EL LOOP
+    if (boatAndIslandArray[boatAndIslandArray.length - 2] === "⛵️") {
+        boatInSea = false;
     }
 }
 

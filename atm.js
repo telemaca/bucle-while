@@ -15,8 +15,9 @@
 //  - Depositado: $100
 
 let moneyInAccount = 10000;
-let moneyToWithdraw = 0;
 let actionToPerform = "";
+let moneyToWithdraw = 0;
+let moneyToDeposit = 0;
 
 while (actionToPerform !== "SALIR") {
     actionToPerform = prompt(`¿Qué desea hacer? \n-Extraer dinero (EXTRAER) \n-Depositar dinero (DEPOSITAR) \n-Consultar su saldo (CONSULTAR) \n-Ver últimos movimientos (VER) \n-SALIR`);
@@ -30,20 +31,16 @@ while (actionToPerform !== "SALIR") {
                     moneyInAccount -= moneyToWithdraw
                 }
                 break;
-            // case "DEPOSITAR":
-            //     arrayToString = tasksList.join("\n")
-            //     taskNumber = Number(prompt(arrayToString + `\nIngrese el número de la tarea a modificar:`));
-            //     task = prompt(`Ingrese la nueva tarea:`);
-            //     tasksList[taskNumber - 1] = task;
-            //     break;
-            // case "CONSULTAR":
-            //     arrayToString = tasksList.join("\n")
-            //     taskNumber = Number(prompt(arrayToString + `\nIngrese el número de la tarea a eliminar:`));
-            //     tasksList.splice(taskNumber-1, 1)
-            //     break;
-            // case "VER":
-            //     arrayToString = tasksList.join("\n")
-            //     alert(arrayToString)
-            //     break;
+            case "DEPOSITAR":
+                moneyToDeposit = prompt(`¿Cuánto dinero quiere depositar?`)
+                moneyInAccount += moneyToDeposit
+                break;
+            case "CONSULTAR":
+                alert(`Su saldo actual es: $${moneyInAccount}`)
+                break;
+            case "VER":
+                arrayToString = tasksList.join("\n")
+                alert(arrayToString)
+                break;
         }
     }

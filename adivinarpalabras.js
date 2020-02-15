@@ -17,14 +17,21 @@ let userGuess = prompt(`Adivine la palabra (todo mayúsculas):`)
 let vuelta = 0;
 
 // CREO VARIABLE "PISTA" PARA IR INDICANDO LAS LETRAS DENTRO DEL LOOP
-let pista = []
+let pista = [];
+
+//CREO FLAG VARIABLE
+let notGuessing = true;
 
 
 //NO ADIVINA LA PALABRA; NUEVAS CHANCES
-while (userGuess !== random && vuelta < randomWordsLetters.length -1) {
+while (notGuessing) {
     pista = random.slice(0, vuelta + 1)
     userGuess = prompt(`No adivinaste :( \nProbá de nuevo.\nPista: ${pista}`);
     vuelta++;
+
+    if (userGuess === random || vuelta > randomWordsLetters.length -1) {
+        notGuessing = false;
+    }
 }
 
 //NO ADIVINÓ NUNCA

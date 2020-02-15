@@ -11,8 +11,11 @@ let potionHealing = 0;
 let potionSearch = 0;
 let action = "";
 
-//ESTABLEZCO LOOP WHILE QUE DURA MIENTRAS EL MONSTRUO Y LA JUGADORA TENGAN 1 O + DE VIDA
- while(playerLife > 0 && monsterLife > 0 && action !== "SALIR") {
+//FLAG VARIABLE
+let keepGoing = true;
+
+//ESTABLEZCO LOOP WHILE QUE DURA MIENTRAS EL MONSTRUO Y LA JUGADORA TENGAN 1 O + DE VIDA, O HASTA QUE SE ESCRIBA "SALIR"
+ while(keepGoing) {
     //MUESTRO AL USUARIO LOS VALORES DE JUEGO Y LAS OPCIONES
     action = prompt(`Vida de jugadora: ${playerLife} \nVida de monstruo: ${monsterLife} \nCantidad de pociones disponibles: ${potionAmount} \nAtaque máximo jugadora: ${playerMaxAttack} \nAtaque máximo del monstruo: ${monsterMaxAttack} \nCuración máxima de la poción: ${potionMaxHealing} \n¿Qué vas a hacer? //Atacar al monstruo (ATACAR) //Tomar una poción (TOMAR) //Buscar una poción (BUSCAR) //SALIR`)
 
@@ -51,5 +54,10 @@ let action = "";
         } else {
             alert(`El monstruo te atacó con ${monsterAttack} de fuerza. Te queda ${playerLife} de vida.`)
         }
+    }
+
+    //CONDICIONES PARA TERMINAR EL JUEGO
+    if (playerLife <= 0 || monsterLife <= 0 || action === "SALIR") {
+        keepGoing = false;
     }
 }

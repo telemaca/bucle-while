@@ -5,9 +5,12 @@ let task = [];
 let actionToPerform = "";
 let taskNumber = 0;
 
+//FLAG VARIABLE
+let keepGoing = true;
+
 //WHILE LOOP QUE SE TERMINA SOLO ESCRIBIENDO "SALIR"
-while (actionToPerform !== "SALIR") {
-actionToPerform = prompt(`¿Qué querés hacer? \n-Agregar una tarea (AGREGAR) \n-Modificar una tarea (MODIFICAR) \n-Eliminar una tarea (ELIMINAR) \n-Ver tareas (VER) \n-SALIR`);
+while (keepGoing) {
+    actionToPerform = prompt(`¿Qué querés hacer? \n-Agregar una tarea (AGREGAR) \n-Modificar una tarea (MODIFICAR) \n-Eliminar una tarea (ELIMINAR) \n-Ver tareas (VER) \n-SALIR`);
 
     switch (actionToPerform) {
         //AGREGA TAREAS Y LAS VA SUMANDO A UN ARRAY DE TAREAS
@@ -33,5 +36,10 @@ actionToPerform = prompt(`¿Qué querés hacer? \n-Agregar una tarea (AGREGAR) \
             arrayToString = tasksList.join("\n")
             alert(arrayToString)
             break;
+    }
+
+    //CONDICION PARA TERMINAR EL PROGRAMA
+    if (actionToPerform === "SALIR") {
+        keepGoing = false;
     }
 }

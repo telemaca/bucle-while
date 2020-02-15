@@ -13,18 +13,28 @@ let setNumber = 1;
 //CREO VARIABLE VACÍA PARA LA GANADORA DE CADA SET
 let setWinner = "";
 
+//CREO FLAG VARIABLE
+let weDontHaveAWinner = true;
+
+let scoreMessage = "";
+
 //LOOP WHILE PARA IR INGRESANDO LOS RESULTADOS
-while (player1Score < 3 && player2Score < 3) {
+while (weDontHaveAWinner) {
     setWinner = prompt(`¿Quién ganó el set ${setNumber}: ${player1} o ${player2}?`);
     setNumber++;
     setWinner === player1 ? player1Score++ : player2Score++;
+    scoreMessage = `${player1} (${player1Score}) / ${player2} (${player2Score})`
 
     //SE DEFINE SI HAY GANADORA
     if (player1Score === 3) {
-        alert(`¡Ganó ${player1}! \nResultado final: ${player1} (${player1Score}) / ${player2} (${player2Score})`)
+        alert(`¡Ganó ${player1}! \nResultado final: ` + scoreMessage)
     } else if (player2Score === 3) {
-        alert(`¡Ganó ${player2}! \nResultado final: ${player1} (${player1Score}) / ${player2} (${player2Score})`)
+        alert(`¡Ganó ${player2}! \nResultado final: ` + scoreMessage)
     } else {
-        alert(`El puntaje está en: ${player1} (${player1Score}) / ${player2} (${player2Score})`)
+        alert(`El puntaje está en: ` + scoreMessage)
+    }
+
+    if (player1Score === 3 || player2Score === 3) {
+        weDontHaveAWinner = false;
     }
 }
